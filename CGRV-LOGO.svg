@@ -2,20 +2,20 @@
 <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
   <circle style="stroke: rgb(0, 0, 0); fill: rgb(0, 165, 255); stroke-width: 21px;" cx="244.24" cy="256.336" r="121.245" transform="matrix(1.017756, 0, 0, 1.004439, -2.183926, -0.599676)"/>
   <path style="fill: rgb(0, 103, 255); stroke: rgb(0, 163, 255); stroke-width: 3px;" d="M 242.397 147.119 C 330.488 153.43 370.45 311.961 244.103 364.972 C 315.436 365.24 362.22 311.679 360.025 253.6 C 362.793 216.75 324.95 144.212 242.397 147.119 Z"/>
-  <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(245, 245, 245); stroke-width: 16px;" cx="345.385" cy="186.4" rx="21.345" ry="20.538"/>
-  <rect x="358.633" y="189.284" width="9.515" height="2.88" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 16px;" transform="matrix(1, 0, 0, 1, 17.761032, -1.076426)"/>
-  <rect x="307.032" y="187.541" width="9.515" height="2.88" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 16px;"/>
+  <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(245, 245, 245); stroke-width: 16px;" cx="356.149" cy="196.626" rx="21.345" ry="20.538"/>
+  <rect x="387.158" y="198.434" width="9.515" height="2.88" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 16px;"/>
+  <rect x="317.796" y="197.767" width="9.515" height="2.88" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 16px;"/>
   <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 16px;" x1="126.369" y1="228.504" x2="186.278" y2="228.504"/>
   <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 16px;" x1="133.791" y1="205.16" x2="174.614" y2="205.16"/>
-  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 21px;" x1="243.055" y1="248.376" x2="69.418" y2="359.781"/>
-  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 7px;" x1="67.038" y1="381.294" x2="253.695" y2="263.217"/>
-  <rect x="402.066" y="158.244" width="47.518" height="62.188" style="stroke: rgb(0, 0, 0); fill: rgb(255, 166, 71); stroke-width: 9px;"/>
-  <rect x="412.64" y="204.811" width="26.959" height="5.033" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 5px;"/>
-  <path style="stroke: rgb(0, 0, 0); stroke-width: 3px;" d="M 410.515 171 L 410.515 177.742 C 422.918 185.343 431.605 167.804 441.077 177.742 L 441.077 171.361 C 431.08 164.057 421.783 178.285 410.515 171 Z"/>
-  <rect x="412.247" y="188.01" width="26.959" height="5.033" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 5px;"/>
-  <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(255, 166, 71); stroke-width: 10px;" cx="456.943" cy="117.869" rx="15.963" ry="15.694"/>
-  <rect x="244.271" y="157.818" width="47.518" height="62.188" style="stroke: rgb(0, 0, 0); fill: rgb(255, 166, 71); stroke-width: 9px;"/>
-  <rect x="254.845" y="204.385" width="26.959" height="5.033" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 5px;"/>
-  <path style="stroke: rgb(0, 0, 0); stroke-width: 3px;" d="M 252.72 170.574 L 252.72 177.316 C 265.123 184.917 273.81 167.378 283.282 177.316 L 283.282 170.935 C 273.285 163.631 263.988 177.859 252.72 170.574 Z"/>
-  <rect x="254.452" y="187.584" width="26.959" height="5.033" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 5px;"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 21px;" x1="230.138" y1="256.449" x2="24.747" y2="386.691"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 7px;" x1="34.207" y1="402.283" x2="239.701" y2="271.29"/>
+  <rect x="409.063" y="160.936" width="53.976" height="80.486" style="stroke: rgb(0, 0, 0); fill: rgb(255, 166, 71); stroke-width: 9px;"/>
+  <rect x="423.404" y="215.037" width="26.959" height="5.033" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 5px;"/>
+  <path style="stroke: rgb(0, 0, 0); stroke-width: 3px;" d="M 421.279 181.226 L 421.279 187.968 C 433.682 195.569 442.369 178.03 451.841 187.968 L 451.841 181.587 C 441.844 174.283 432.547 188.511 421.279 181.226 Z"/>
+  <rect x="423.011" y="198.236" width="26.959" height="5.033" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 5px;"/>
+  <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(255, 166, 71); stroke-width: 10px;" cx="451.022" cy="121.636" rx="15.963" ry="15.694"/>
+  <rect x="251.806" y="159.972" width="53.976" height="80.486" style="stroke: rgb(0, 0, 0); fill: rgb(255, 166, 71); stroke-width: 9px;"/>
+  <rect x="266.147" y="214.073" width="26.959" height="5.033" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 5px;"/>
+  <path style="stroke: rgb(0, 0, 0); stroke-width: 3px;" d="M 264.022 180.262 L 264.022 187.004 C 276.425 194.605 285.112 177.066 294.584 187.004 L 294.584 180.623 C 284.587 173.319 275.29 187.547 264.022 180.262 Z"/>
+  <rect x="265.754" y="197.272" width="26.959" height="5.033" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 5px;"/>
 </svg>
