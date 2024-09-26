@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebRTC Text Chat - Caller</title>
+</head>
+<body>
+    <h1>WebRTC Text Chat - Caller</h1>
+
+    <h2>Step 1: Create Offer</h2>
+    <button id="createOffer">Create Offer</button>
+
+    <h2>Step 2: Copy Offer SDP</h2>
+    <textarea id="offerSDP" cols="60" rows="10" readonly></textarea>
+
+    <h2>Step 3: Paste Callee's Answer SDP</h2>
+    <textarea id="answerSDP" cols="60" rows="10"></textarea>
+    <button id="setAnswer">Set Answer</button>
+
+    <h2>Step 4: Chat</h2>
+    <input type="text" id="messageInput" placeholder="Type a message"/>
+    <button id="sendMessage">Send</button>
+    <div id="chatLog"></div>
+
+    <script>
+        let pc;
+        let dataChannel;
+
+        const configuration = {
+            iceServers: [
+                { urls: 'stun:stun.l.google.com:19302' }
+            ]
+        };
+
+        document.getElementById('createOffer').onclick = async () => {
+            pc = new RTCPeerConnection(configuration);
+
+            // Create data channel
+            dataChannel = pc.createDataChannel('chat');
+            setupDataChannel();
+
+            pc.onicecandidate = event => {
+                if (event.candidate === null) {
+                    // All ICE candidates have been gathered
+                    document.getElementById('offerSDP').value = JSON.stringify(pc.localDescription);
+                }
+            };
+
+            let offer = await pc.createOffer();
+            await pc.setLocalDescription(offer);
+        };
+
+        document.getElementById('setAnswer').onclick = async () => {
+            let answerSDP = document.getElementById('answerSDP').value;
+            if (answerSDP === '') return;
+
+            let answer = JSON.parse(answerSDP);
+            await pc.setRemoteDescription(new RTCSessionDescription(answer));
+        };
+
+        function setupDataChannel() {
+            dataChannel.onopen = () => {
+                console.log('Data channel is open');
+            };
+
+            dataChannel.onmessage = event => {
+                let chatLog = document.getElementById('chatLog');
+                chatLog.innerHTML += '<div>Peer: ' + event.data + '</div>';
+            };
+        }
+
+        document.getElementById('sendMessage').onclick = () => {
+            let message = document.getElementById('messageInput').value;
+            dataChannel.send(message);
+            let chatLog = document.getElementById('chatLog');
+            chatLog.innerHTML += '<div>You: ' + message + '</div>';
+            document.getElementById('messageInput').value = '';
+        };
+    </script>
+</body>
+</html>
