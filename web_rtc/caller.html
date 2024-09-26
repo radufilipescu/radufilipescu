@@ -27,26 +27,38 @@
 
         const configuration = {
             iceServers: [
-                { urls: 'stun:stun.l.google.com:19302' }
+                { urls: "stun:stun.l.google.com:19302" },
+                { urls: "stun:stun.l.google.com:5349" },
+                { urls: "stun:stun1.l.google.com:3478" },
+                { urls: "stun:stun1.l.google.com:5349" },
+                { urls: "stun:stun2.l.google.com:19302" },
+                { urls: "stun:stun2.l.google.com:5349" },
+                { urls: "stun:stun3.l.google.com:3478" },
+                { urls: "stun:stun3.l.google.com:5349" },
+                { urls: "stun:stun4.l.google.com:19302" },
+                { urls: "stun:stun4.l.google.com:5349" }
             ]
         };
 
         document.getElementById('createOffer').onclick = async () => {
             pc = new RTCPeerConnection(configuration);
 
+            // Add event listeners for debugging
+            addConnectionEventListeners(pc);
+
             // Create data channel
             dataChannel = pc.createDataChannel('chat');
             setupDataChannel();
 
-            pc.onicecandidate = event => {
-                if (event.candidate === null) {
-                    // All ICE candidates have been gathered
-                    document.getElementById('offerSDP').value = JSON.stringify(pc.localDescription);
-                }
-            };
-
+            // Start ICE gathering after setting local description
             let offer = await pc.createOffer();
             await pc.setLocalDescription(offer);
+
+            // Wait for ICE gathering to complete
+            await waitForICEGatheringComplete(pc);
+
+            // Output the SDP for manual exchange
+            document.getElementById('offerSDP').value = JSON.stringify(pc.localDescription);
         };
 
         document.getElementById('setAnswer').onclick = async () => {
@@ -70,11 +82,45 @@
 
         document.getElementById('sendMessage').onclick = () => {
             let message = document.getElementById('messageInput').value;
-            dataChannel.send(message);
-            let chatLog = document.getElementById('chatLog');
-            chatLog.innerHTML += '<div>You: ' + message + '</div>';
-            document.getElementById('messageInput').value = '';
+            if (dataChannel && dataChannel.readyState === 'open') {
+                dataChannel.send(message);
+                let chatLog = document.getElementById('chatLog');
+                chatLog.innerHTML += '<div>You: ' + message + '</div>';
+                document.getElementById('messageInput').value = '';
+            } else {
+                alert('Data channel is not open yet.');
+            }
         };
+
+        function addConnectionEventListeners(pc) {
+            pc.oniceconnectionstatechange = () => {
+                console.log('ICE Connection State Change: ' + pc.iceConnectionState);
+            };
+
+            pc.onconnectionstatechange = () => {
+                console.log('Connection State Change: ' + pc.connectionState);
+            };
+
+            pc.onicegatheringstatechange = () => {
+                console.log('ICE Gathering State Change: ' + pc.iceGatheringState);
+            };
+        }
+
+        function waitForICEGatheringComplete(pc) {
+            return new Promise(resolve => {
+                if (pc.iceGatheringState === 'complete') {
+                    resolve();
+                } else {
+                    function checkState() {
+                        if (pc.iceGatheringState === 'complete') {
+                            pc.removeEventListener('icegatheringstatechange', checkState);
+                            resolve();
+                        }
+                    }
+                    pc.addEventListener('icegatheringstatechange', checkState);
+                }
+            });
+        }
     </script>
 </body>
 </html>
