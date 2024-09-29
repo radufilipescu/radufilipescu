@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TRYSTERO Text Chat - Room</title>
+</head>
+<body>
+  <h1>TRYSTERO Text Chat - Room</h1>
+  <div id="chat"></div>
+  <input type="text" id="messageInput" placeholder="Type a message"/>
+  <button id="sendMessage">Send</button>
+  <br />
+  <br />
+  <p>LOGS</p>
+  <div style="border: 1px solid red;" id="logs"></div>
+
+  <script type="module">
+    import { joinRoom, selfId } from './trystero-nostr.min.js';
+    
+    function writeLog(msg) {
+      document.getElementById('logs').innerHTML += msg + '<br />';
+    };
+
+    function addMessage(msg) {
+      document.getElementById('chat').innerHTML += msg + '<br />';
+    }
+
+    writeLog(`my peer ID is ${selfId}`);
+
+    const config = { appId: 'rohvva = 57115f04-be11-4e96-8887-86dabb8ea281' }
+    const room = joinRoom(config, 'rohvva room');
+
+    room.onPeerJoin(peerId => writeLog(`${peerId} joined`));
+    room.onPeerLeave(peerId => writeLog(`${peerId} left`));
+
+    function closeConnection() {
+      room.leave()
+    }
+    
+    window.onbeforeunload = closeConnection;
+
+    const [sendMessage, getMessage] = room.makeAction('message');
+
+    // listen for messages sent to you
+    getMessage((data, peerId) => addMessage(`${peerId} => ${data.text}`));
+
+    document.getElementById('sendMessage').onclick = () => {
+      const message = document.getElementById('messageInput').value;
+      addMessage(`me => ${message}`);
+      document.getElementById('messageInput').value = '';
+    };
+  </script>
+</body>
+</html>
